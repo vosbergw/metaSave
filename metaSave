@@ -51,9 +51,6 @@ def main():
 	metaSave gives an example of using the picasa3meta modules.  It will 
 	walk an image directory tree and create a duplicate tree (with .meta 
 	suffix) of files containing just the metadata related to each image.  
-	This was basically just an exercise in discovering where and how Picasa 
-	stores all it's image information but hopefully someone may find it
-	useful.
 	 
 	If the input is:
 	
