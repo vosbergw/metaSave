@@ -215,7 +215,7 @@ def main():
 			iniO = []
 			for ini in locate(".picasa.ini", source):			   
 				iniO.append(iniinfo.IniInfo(ini,con))			 
-			print "[%d] processed"%len(iniO)
+			print "%d processed"%len(iniO)
 				
 			print "\nnow walking image library at %s"%source,
 			print " and writing all metadata to a duplicate tree at %s ..."%dest,
@@ -303,7 +303,7 @@ def main():
 						oF.write("%s:%s\n"%(K,V))
 					oF.close()
 					
-			print "[%d] files"%count
+			print "%d files"%count
 		except:
 			print "error: ",sys.exc_info()[0],":",sys.exc_info()[1]
 			return 3
