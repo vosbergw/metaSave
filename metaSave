@@ -161,12 +161,12 @@ def main():
 			thumbPath = ""
 			
 		print "Picasa3 path: %s"%args.path
-		print "	  thumbs: %s"%thumbfile
-		print "	contacts: %s"%contactFile
-		print "	  source: %s"%source
-		print "		dest: %s"%dest
+		print "      thumbs: %s"%thumbfile
+		print "    contacts: %s"%contactFile
+		print "      source: %s"%source
+		print "        dest: %s"%dest
 		if myPath != "":
-			print "	  myPath: %s"%myPath
+			print "      myPath: %s"%myPath
 			print "   thumbPath: %s"%thumbPath
 		
 
@@ -186,7 +186,8 @@ def main():
 			return 2
 	   
 		try:			
-			print "reading imagedata pmp files ...",
+			print " reading imagedata pmp files ...",
+			sys.stdout.flush()
 			pmpDB = pmpinfo.PmpInfo(os.path.join(args.path,'db3'),'imagedata')
 			print "done"
 			#for K,V in pmpDB.colSizes():
@@ -194,27 +195,31 @@ def main():
 			#for K,V in pmpDB.getEntry(20102):
 			#	print "%s : %s"%(K,V)
 			
-			print "reading pmp index file .... ",
+			print "      reading pmp index file ...",
+			sys.stdout.flush()
 			picasaDb = thumbindex.ThumbIndex(thumbfile)		  
 			print "%d records"%picasaDb.entries		   
 			#for i in range(picasaDb.entries):
 			#	print "%d:%s"%(i,picasaDb.imageFullName(i))
 			
-			print "reading contacts file ...",
+			print "       reading contacts file ...",
+			sys.stdout.flush()
 			con = contacts.Contacts(contactFile)
 			print "%d read"%len(con.handler.mapping)
 			
 			#for K in con.handler.mapping:
 			#	print "contact[%s]=%s"%(K,con.getContact(K))
 				
-			print "reading .picasa.ini files ...",
+			print "   reading .picasa.ini files ...",
+			sys.stdout.flush()
 			iniO = []
 			for ini in locate(".picasa.ini", source):			   
 				iniO.append(iniinfo.IniInfo(ini,con))			 
 			print "[%d] processed"%len(iniO)
 				
-			print "now walking image library at %s"%source,
+			print "\nnow walking image library at %s"%source,
 			print " and writing all metadata to a duplicate tree at %s ..."%dest,
+			sys.stdout.flush()
 			
 			count = 0
 			for img in locate("*",source):

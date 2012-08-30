@@ -3,7 +3,7 @@
 
 DEST=/usr/local/bin
 
-install: ${DEST}/imtag
+install: ${DEST}/metaSave
 
-/usr/local/bin/imtag: imtag
-	install imtag ${DEST}
+/usr/local/bin/metaSave: metaSave
+	install metaSave ${DEST}
